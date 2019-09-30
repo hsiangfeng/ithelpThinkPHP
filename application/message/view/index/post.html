@@ -1,0 +1,30 @@
+{layout name="layout"/}
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered table-striped">
+      <tbody>
+        <tr>
+          <td width="100px" class="text-center align-middle">標題</td>
+          <td class="text-center align-middle">{$content.title}</td>
+        </tr>
+        <tr>
+          <td class="text-center align-middle">內容</td>
+          <td>{$content.content | raw}</td>
+        </tr>
+        <tr>
+          <td class="text-center align-middle">作者</td>
+          <td>{$content.author}</td>
+        </tr>
+        <tr>
+          {if ($Request.session.email == $content.email)}
+          <td width="100px" class="text-center align-middle">功能</td>
+          <td class="text-center align-middle">
+            <a href="/message/edit/{$content.id}" class="btn btn-primary">編輯留言</a>
+            <a href="/message/delete/{$content.id}" class="btn btn-danger">刪除留言</a>
+          </td>
+          {/if}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

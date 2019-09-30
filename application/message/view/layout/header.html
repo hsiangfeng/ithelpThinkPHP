@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$title}</title>
+    {css href="/static/css/bootstrap.min.css"}
+    <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/message">IT 邦留言板</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/message">首頁 <span class="sr-only">(current)</span></a>
+            </li>
+            {if ($Request.session.id)}
+            <li class="nav-item">
+              <a class="nav-link" href="/message/create">新增留言</a>
+            </li>
+            {/if}
+          </ul>
+          {if (!$Request.session.id)}
+          <a class="nav-link" href="/message/user/signup">註冊</a>
+          <a class="nav-link" href="/message/user/login">登入</a>
+          {else /}
+          <a class="nav-link" href="/message/user/signout">登出</a>
+          {/if}
+        </div>
+      </nav>
+    </div>

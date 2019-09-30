@@ -1,0 +1,24 @@
+{layout name="layout" replace="[__ONEFORALL__]"/}
+<div class="container">
+  <h1>{$title} - volist 標籤</h1>
+  {volist name="user" id="list"}
+  <ul class="list-group">
+    <li class="list-group-item active">KEY:{$i}</li>
+    <li class="list-group-item">姓名:{$list.name}</li>
+    <li class="list-group-item">體重:{$list.weight}</li>
+    <li class="list-group-item">身高:{$list.height}</li>
+  </ul>
+  {/volist}
+</div>
+<div class="container">
+  <h1>{$title} - foreach 標籤</h1>
+  {foreach $user as $vo}
+  <ul class="list-group">
+    <li class="list-group-item active">KEY:{$vo.id}</li>
+    <li class="list-group-item">姓名:{$vo.name}</li>
+    <li class="list-group-item">體重:{$vo.weight}</li>
+    <li class="list-group-item">身高:{$vo.height}</li>
+  </ul>
+  {/foreach}
+</div>
+

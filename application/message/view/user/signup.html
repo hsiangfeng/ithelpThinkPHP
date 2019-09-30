@@ -1,0 +1,51 @@
+{layout name="layout"/}
+<div class="container pt-5">
+  <h3>註冊帳號</h3>
+  <form action="/message/user/create" method="post">
+    {:token()}
+    <span class="text-danger">{$Request.session.error}</span>
+    <div class="form-group">
+      <label for="email">Email(帳號)</label>
+      <input type="email" name="email" id="email" class="form-control" placeholder="請輸入信箱" required>
+      <span class="text-danger">{$Request.session.error.email}</span>
+    </div>
+    <div class="form-group">
+      <label for="password">Password(密碼)</label>
+      <input type="password" name="password" id="password" class="form-control" placeholder="請輸入密碼" required>
+      <span class="text-danger">{$Request.session.error.password}</span>
+    </div>
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password(再輸入一次密碼)</label>
+      <input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="請輸入再輸入一次密碼" required>
+      <span class="text-danger">{$Request.session.error.confirmPassword}</span>
+    </div>
+    <div class="form-group">
+      <label for="Name">Name(使用者姓名)</label>
+      <input type="text" name="name" id="name" class="form-control" placeholder="請輸入使用者姓名" required>
+      <span class="text-danger">{$Request.session.error.name}</span>
+    </div>
+    <div class="form-group">
+      <label for="nikename">Nikename(使用者暱稱)</label>
+      <input type="text" name="nikename" id="nikename" class="form-control" placeholder="請輸入使用者暱稱" required>
+      <span class="text-danger">{$Request.session.error.nikename}</span>
+    </div>
+    <div>
+      <div><img src="{:captcha_src()}" alt="刷新驗證碼" id="captchaImg" style="cursor: pointer;"/></div>
+      <input type="text" name="captcha" id="captcha" class="form-control" placeholder="captcha" required>
+      <span class="text-danger">{$Request.session.error.captcha}</span>
+    </div>
+    <input type="submit" value="註冊" class="btn btn-primary">
+    <input type="reset" value="重設" class="btn btn-danger">
+  </form>
+</div>
+
+<script>
+const captchaImg = document.getElementById('captchaImg');
+captchaImg.addEventListener('click',(e) => {
+  e.preventDefault();
+  captchaImg.src = "/captcha";
+})
+window.setInterval(() => {
+  captchaImg.src = "/captcha";
+},60000)
+</script>

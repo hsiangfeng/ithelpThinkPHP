@@ -1,0 +1,29 @@
+{layout name="layout" replace="[__ONEFORALL__]"/}
+  <div class="container">
+    <h3>比較標籤-eq</h3>
+    {eq name="name" value="Ray"}
+      <span>管理員你好</span>
+    {else/}
+      <span>你是誰?我不認識你</span>
+    {/eq}
+  </div>
+  <hr>
+  <div class="container">
+    <h3>條件標籤-if</h3>
+    {if ($name == 'Ray')}
+      <span>管理員你好</span>
+    {else /}
+      <span>你是誰?我不認識你</span>
+    {/if}
+  </div>
+  <hr>
+  <div class="container">
+    <h3>條件標籤-switch</h3>
+    {switch $name}
+      {case Ray}
+        <span>管理員你好</span>
+      {/case}
+      {default /}
+        <span>你是誰?我不認識你</span>
+    {/switch}
+  </div>

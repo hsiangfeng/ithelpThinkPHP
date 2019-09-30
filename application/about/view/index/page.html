@@ -1,0 +1,13 @@
+{layout name="layout" replace="[__ONEFORALL__]"/}
+<div class="container">
+  {volist name="user" id="list"}
+  <ul class="list-group">
+    <li class="list-group-item active">KEY:{$i}</li>
+    <li class="list-group-item">姓名:{$list.name}</li>
+    <li class="list-group-item">體重:{$list.weight}</li>
+    <li class="list-group-item">身高:{$list.height}</li>
+  </ul>
+  {/volist}
+  {$user->render()|raw}
+</div>
+

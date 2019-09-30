@@ -1,0 +1,32 @@
+{layout name="layout"/}
+<div class="container pt-5">
+  <h3>會員登入</h3>
+  <form action="" method="post">
+    {:token()}
+    <span class="text-danger">{$Request.session.error}</span>
+    <div class="form-group">
+      <label for="email">Email(帳號)</label>
+      <input type="eamil" name="email" id="email" class="form-control" placeholder="請輸入信箱" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password(密碼)</label>
+      <input type="password" name="password" id="password" class="form-control" placeholder="請輸入密碼" required>
+    </div>
+    <div>
+      <div><img src="{:captcha_src()}" alt="刷新驗證碼" id="captchaImg" style="cursor: pointer;" /></div>
+      <input type="text" name="captcha" id="captcha" class="form-control" placeholder="captcha" required>
+    </div>
+    <input type="submit" value="登入" class="btn btn-primary">
+  </form>
+</div>
+
+<script>
+  const captchaImg = document.getElementById('captchaImg');
+  captchaImg.addEventListener('click', (e) => {
+    e.preventDefault();
+    captchaImg.src = "/captcha";
+  })
+  window.setInterval(() => {
+    captchaImg.src = "/captcha";
+  }, 60000)
+</script>
